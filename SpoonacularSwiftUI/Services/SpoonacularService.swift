@@ -11,21 +11,23 @@ import Alamofire
 
 
 protocol SpoonacularService{
-    func getRecipes() -> AnyPublisher<DataResponse<[Recipe], ServiceError>, Never>
+    func getRecipes(ingredients : String) -> AnyPublisher<DataResponse<[Recipe], ServiceError>, Never>
 }
 
 struct SpoonacularHttpService : SpoonacularService{
     
-    func getRecipes() -> AnyPublisher<DataResponse<[Recipe], ServiceError>, Never>  {
+    func getRecipes(ingredients : String) -> AnyPublisher<DataResponse<[Recipe], ServiceError>, Never>  {
         let url = URL(string: ServiceConfiguration.searchUrl)!
         
-        let parameters = generateRequestParameters()
+        var parameters = generateRequestParameters()
+        parameters["ingredients"] = ingredients
         
         let headers = generateRequestHeaders()
         return sendRequest(url,
                            HTTPMethod.get,
                            headers,
-                           parameters)
+                           &parameters)
+        
             .validate()
             .publishDecodable(type: [Recipe].self)
             .map { response in
@@ -33,6 +35,9 @@ struct SpoonacularHttpService : SpoonacularService{
             }.receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
+    
+    
+    
 }
 
 extension SpoonacularService {
@@ -53,7 +58,8 @@ extension SpoonacularService {
         return headers
     }
     
-    func sendRequest(_ url :URL,_ method: HTTPMethod, _ headers : HTTPHeaders, _ parameters : [String : Any])-> DataRequest {
+    func sendRequest(_ url :URL,_ method: HTTPMethod, _ headers : HTTPHeaders, _ parameters :inout [String : Any])-> DataRequest {
+        parameters[ServiceConfiguration.appClientKey] = ServiceConfiguration.appClientKeyValue
         return AF.request(url,
                           method: .get,
                           parameters: parameters,
@@ -65,10 +71,10 @@ extension SpoonacularService {
 
 struct ServiceConfiguration{
     public static let appClientKeyValue =  "336f4185e30f45dbb2ec56a2f36df171"
-    public static let appClientKey =  "336f4185e30f45dbb2ec56a2f36df171"
+    public static let appClientKey =  "apiKey"
     public static let headerKey =  "Accept"
     public static let headerValue =  "application/json"
-    public static let searchUrl = "https://api.spoonacular.com/recipes/complexSearch"
+    public static let searchUrl = "https://api.spoonacular.com/recipes/random"
 }
 
 

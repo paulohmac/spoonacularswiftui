@@ -11,7 +11,7 @@ struct Recipe: BaseCodable{
     let id : Int?
     let title : String?
     let image : String?
-    let extendedIngredients : [ExtendedIngredients]
+    let missedIngredients : [ExtendedIngredients]
     
     struct ExtendedIngredients : Codable {
         let aisle : String?
