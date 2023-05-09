@@ -11,12 +11,12 @@ import Alamofire
 
 
 protocol SpoonacularService{
-    func getRecipes(ingredients : String) -> AnyPublisher<DataResponse<[Recipe], ServiceError>, Never>
+    func getRecipes(ingredients : String) -> AnyPublisher<Recipes?, AFError>
 }
 
 struct SpoonacularHttpService : SpoonacularService{
     
-    func getRecipes(ingredients : String) -> AnyPublisher<DataResponse<[Recipe], ServiceError>, Never>  {
+    func getRecipes(ingredients : String) -> AnyPublisher<Recipes?, AFError>  {
         let url = URL(string: ServiceConfiguration.searchUrl)!
         
         var parameters = generateRequestParameters()
@@ -27,13 +27,11 @@ struct SpoonacularHttpService : SpoonacularService{
                            HTTPMethod.get,
                            headers,
                            &parameters)
-        
-            .validate()
-            .publishDecodable(type: [Recipe].self)
-            .map { response in
-                response.mapError { error in ServiceError( code: "", message: error.localizedDescription) }
-            }.receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+        .validate()
+           .publishDecodable(type: Recipes?.self)
+           .value()
+           .receive(on: DispatchQueue.main)
+           .eraseToAnyPublisher()
     }
     
     

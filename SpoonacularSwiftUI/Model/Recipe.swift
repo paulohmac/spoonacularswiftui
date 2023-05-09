@@ -7,11 +7,20 @@
 
 import UIKit
 
-struct Recipe: BaseCodable{
+struct Recipes : BaseCodable{
+    var id: ObjectIdentifier?
+    let recipes : [Recipe]?
+    
+    enum CodingKeys: String, CodingKey {
+         case recipes
+    }
+}
+
+struct Recipe: BaseCodable, Codable{
     let id : Int?
     let title : String?
     let image : String?
-    let missedIngredients : [ExtendedIngredients]
+    let missedIngredients : [ExtendedIngredients]?
     
     struct ExtendedIngredients : Codable {
         let aisle : String?

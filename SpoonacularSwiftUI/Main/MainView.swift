@@ -20,7 +20,14 @@ struct MainView: View {
             VStack(alignment: .leading) {
                 TextField("Enter the ingredient", text: $viewModel.textSearch  )
                 List(viewModel.recipeList){ recipe in
-                    
+                    VStack{
+                        Text(recipe.title ?? ""  )
+                            .font(.headline)
+                            .padding()
+                        Text(recipe.image ?? "" )
+                            .font(.body)
+                            .padding()
+                    }
                 }
             }.padding(22.0)
         }.onAppear {
