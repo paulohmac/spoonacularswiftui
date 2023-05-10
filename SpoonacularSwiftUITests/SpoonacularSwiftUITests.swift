@@ -6,11 +6,15 @@
 //
 
 import XCTest
+import Alamofire
 @testable import SpoonacularSwiftUI
 
 final class SpoonacularSwiftUITests: XCTestCase {
 
+    var service : SpoonacularHttpService?
+    
     override func setUpWithError() throws {
+        service = SpoonacularHttpService()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
@@ -18,6 +22,70 @@ final class SpoonacularSwiftUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func testDefaultParameters() throws {
+        let parameters = service?.generateRequestParameters()
+        XCTAssertNotNil( parameters , "Default parameters creation problem")
+        XCTAssert( parameters?.count == 1 , "Default parameters problem")
+        XCTAssertNotNil( parameters?[ServiceConfiguration.appClientKey] , "parameters app client key")
+        XCTAssert( parameters?[ServiceConfiguration.appClientKey] as! String  == ServiceConfiguration.appClientKeyValue, "parameters app client key")
+    }
+
+    func testDefaultHeaders() throws {
+        let parameters = service?.generateRequestHeaders()
+        XCTAssertNotNil( parameters , "Default headers creation problem")
+        XCTAssert( parameters?.count == 1 , "Default headers problem")
+        XCTAssertNotNil( parameters?[ServiceConfiguration.headerKey] , "parameters app headers")
+        XCTAssert( parameters?[ServiceConfiguration.headerKey] as! String  == ServiceConfiguration.headerValue, "parameters headers")
+    }
+
+    func testDefaultRequest() throws {
+        let url = URL(string: ServiceConfiguration.searchUrl)!
+
+        var parameters = service?.generateRequestParameters()
+        
+        let headers = (service?.generateRequestHeaders())
+        
+        if let headers, var parameters = parameters {
+            XCTAssertNotNil( service?.sendRequest(url,
+                               HTTPMethod.get,
+                               headers,
+                               &parameters) , "Default request notnull")
+        }
+
+    }
+
+    func testRecipesRequest() throws {
+        var cancellableSet: Set<AnyCancellable> = []
+
+        let url = URL(string: ServiceConfiguration.searchUrl)!
+        
+        var parameters = service?.generateRequestParameters()
+        parameters?["ingredients"] = "coffee"
+        
+        let headers = service?.generateRequestHeaders()
+        if let headers, var parameters = parameters {
+            service?.sendRequest(url,
+                               HTTPMethod.get,
+                               headers,
+                        &parameters)
+            .validate()
+            .publishDecodable(type: Recipes?.self)
+            .value()
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+            .sink { completion in
+                XCTAssert(  completion == .failure , "Recipes request fail")
+            } receiveValue: {[weak self] value in
+                guard let self = self else { return }
+                XCTAssertNotNil( value?.recipes  , "Recipes list is null")
+            }
+            .store(in: &cancellableSet)
+        }
+    }
+
+    
+    
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
