@@ -7,6 +7,8 @@
 
 import XCTest
 import Alamofire
+import Combine
+
 @testable import SpoonacularSwiftUI
 
 final class SpoonacularSwiftUITests: XCTestCase {
@@ -59,22 +61,17 @@ final class SpoonacularSwiftUITests: XCTestCase {
 
         let url = URL(string: ServiceConfiguration.searchUrl)!
         
-        var parameters = service?.generateRequestParameters()
-        parameters?["ingredients"] = "coffee"
+        var parameters = "coffee"
         
         let headers = service?.generateRequestHeaders()
-        if let headers, var parameters = parameters {
-            service?.sendRequest(url,
-                               HTTPMethod.get,
-                               headers,
-                        &parameters)
-            .validate()
-            .publishDecodable(type: Recipes?.self)
-            .value()
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+        if let headers {
+            service?.getRecipes(ingredients: parameters)
             .sink { completion in
-                XCTAssert(  completion == .failure , "Recipes request fail")
+                var problem = false
+                if case .failure(_) = completion   {
+                    problem = true
+                }
+                XCTAssertFalse(problem , "Recipes request fail")
             } receiveValue: {[weak self] value in
                 guard let self = self else { return }
                 XCTAssertNotNil( value?.recipes  , "Recipes list is null")

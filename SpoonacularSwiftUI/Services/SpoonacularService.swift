@@ -12,16 +12,35 @@ import Alamofire
 
 protocol SpoonacularService{
     func getRecipes(ingredients : String) -> AnyPublisher<Recipes?, AFError>
+
+    func getRecipe(id : String) -> AnyPublisher<Recipe?, AFError>
 }
 
 struct SpoonacularHttpService : SpoonacularService{
+
+    func getRecipe(id: String) -> AnyPublisher<Recipe?, Alamofire.AFError> {
+        let url = URL(string: String(format:ServiceConfiguration.detailUrl, id))!
+        
+        var parameters = generateRequestParameters()
+        let headers = generateRequestHeaders()
+        return sendRequest(url,
+                           HTTPMethod.get,
+                           headers,
+                           &parameters)
+        .validate()
+           .publishDecodable(type: Recipe?.self)
+           .value()
+           .receive(on: DispatchQueue.main)
+           .eraseToAnyPublisher()
+    }
+    
     
     func getRecipes(ingredients : String) -> AnyPublisher<Recipes?, AFError>  {
         let url = URL(string: ServiceConfiguration.searchUrl)!
         
         var parameters = generateRequestParameters()
-        parameters["ingredients"] = ingredients
-        
+        parameters[ServiceConfiguration.ingredientParamKey] = ingredients
+        parameters[ServiceConfiguration.ItemsParamKey] = ServiceConfiguration.ItemsParamValue
         let headers = generateRequestHeaders()
         return sendRequest(url,
                            HTTPMethod.get,
@@ -33,6 +52,7 @@ struct SpoonacularHttpService : SpoonacularService{
            .receive(on: DispatchQueue.main)
            .eraseToAnyPublisher()
     }
+    
     
     
     
@@ -73,6 +93,10 @@ struct ServiceConfiguration{
     public static let headerKey =  "Accept"
     public static let headerValue =  "application/json"
     public static let searchUrl = "https://api.spoonacular.com/recipes/random"
+    public static let detailUrl = "https://api.spoonacular.com/recipes/%@/information"
+    public static let ingredientParamKey = "ingredients"
+    public static let ItemsParamKey = "number"
+    public static let ItemsParamValue = "1"
 }
 
 

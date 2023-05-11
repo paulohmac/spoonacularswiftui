@@ -1,43 +1,31 @@
 //
-//  MainViewModel.swift
+//  DetailViewModel.swift
 //  SpoonacularSwiftUI
 //
-//  Created by Paulo H.M. on 07/05/23.
+//  Created by Paulo H.M. on 10/05/23.
 //
 
 import Foundation
 import Combine
 
-protocol MainViewModel{
-    
-}
 
-
-class MainSpoonacularViewModel : MainViewModel, ObservableObject{
+class DetailViewModel : ObservableObject{
     
-    @Published var recipeList =  [Recipe]()
+    @Published var recipe :  Recipe?
     
     private var cancellableSet: Set<AnyCancellable> = []
 
    
     @Published var isLoading =  false
 
-    @Published var textSearch : String = "" {
-        didSet(value){
-            if value != "", value.count > 5 {
-                getFindRecipes(ingredients: value)
-            }
-        }
-    }
-    
     var service: SpoonacularService
     
     init() {
         self.service = SpoonacularHttpService()
     }
     
-    public func getFindRecipes(ingredients : String){
-        service.getRecipes(ingredients: ingredients)
+    public func getFindRecipe(idRecipe : String){
+        service.getRecipe(id: idRecipe)
             .sink { completion in
                 
                 switch completion {
@@ -61,11 +49,11 @@ class MainSpoonacularViewModel : MainViewModel, ObservableObject{
             } receiveValue: {[weak self] value in
                 guard let self = self else { return }
                 
-                if let recipes = value?.recipes{
-                    self.recipeList  = recipes
+                if let recipes = value {
+                    self.recipe  = recipes
                 }
             }
             .store(in: &cancellableSet)
     }
-    
 }
+

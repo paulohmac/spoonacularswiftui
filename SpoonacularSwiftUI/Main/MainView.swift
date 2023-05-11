@@ -21,24 +21,21 @@ struct MainView: View {
                 TextField("Enter the ingredient", text: $viewModel.textSearch  )
                 List(viewModel.recipeList){ recipe in
                     VStack{
-                        Text(recipe.title ?? ""  )
-                            .font(.headline)
-                            .padding()
-                        Text(recipe.image ?? "" )
-                            .font(.body)
-                            .padding()
+                        NavigationLink(destination: DetailView(idRecipe: recipe.id ?? 0)) {
+                            Text(recipe.title ?? ""  )
+                                .font(.headline)
+                                .padding()
+                            Text(recipe.image ?? "" )
+                                .font(.body)
+                                .padding()
+                        }
                     }
                 }
             }.padding(22.0)
         }.onAppear {
-            loadData()
         }
     }
     
-    
-    private func loadData(){
-
-    }
 }
 
 struct MainView_Previews: PreviewProvider {
