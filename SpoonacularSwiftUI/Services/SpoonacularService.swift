@@ -13,13 +13,13 @@ import Alamofire
 protocol SpoonacularService{
     func getRecipes(ingredients : String) -> AnyPublisher<Recipes?, AFError>
 
-    func getRecipe(id : String) -> AnyPublisher<Recipe?, AFError>
+    func getIngredients(id : String) -> AnyPublisher<Ingredients?, AFError>
 }
 
 struct SpoonacularHttpService : SpoonacularService{
 
-    func getRecipe(id: String) -> AnyPublisher<Recipe?, Alamofire.AFError> {
-        let url = URL(string: String(format:ServiceConfiguration.detailUrl, id))!
+    func getIngredients(id: String) -> AnyPublisher<Ingredients?, Alamofire.AFError> {
+        let url = URL(string: String(format:ServiceConfiguration.ingredientsUrl, id))!
         
         var parameters = generateRequestParameters()
         let headers = generateRequestHeaders()
@@ -28,7 +28,7 @@ struct SpoonacularHttpService : SpoonacularService{
                            headers,
                            &parameters)
         .validate()
-           .publishDecodable(type: Recipe?.self)
+           .publishDecodable(type: Ingredients?.self)
            .value()
            .receive(on: DispatchQueue.main)
            .eraseToAnyPublisher()
@@ -93,10 +93,10 @@ struct ServiceConfiguration{
     public static let headerKey =  "Accept"
     public static let headerValue =  "application/json"
     public static let searchUrl = "https://api.spoonacular.com/recipes/random"
-    public static let detailUrl = "https://api.spoonacular.com/recipes/%@/information"
+    public static let ingredientsUrl = "https://api.spoonacular.com/recipes/%@/ingredientWidget.json"
     public static let ingredientParamKey = "ingredients"
     public static let ItemsParamKey = "number"
-    public static let ItemsParamValue = "1"
+    public static let ItemsParamValue = "5"
 }
 
 

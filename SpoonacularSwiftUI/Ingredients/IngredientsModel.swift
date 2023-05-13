@@ -9,13 +9,12 @@ import Foundation
 import Combine
 
 
-class DetailViewModel : ObservableObject{
+class IngredientsViewModel : ObservableObject{
     
-    @Published var recipe :  Recipe?
+    @Published var ingredients =  [Ingredient]()
     
     private var cancellableSet: Set<AnyCancellable> = []
 
-   
     @Published var isLoading =  false
 
     var service: SpoonacularService
@@ -24,8 +23,8 @@ class DetailViewModel : ObservableObject{
         self.service = SpoonacularHttpService()
     }
     
-    public func getFindRecipe(idRecipe : String){
-        service.getRecipe(id: idRecipe)
+    public func listIngredients(idRecipe : String){
+        service.getIngredients(id: idRecipe)
             .sink { completion in
                 
                 switch completion {
@@ -50,7 +49,7 @@ class DetailViewModel : ObservableObject{
                 guard let self = self else { return }
                 
                 if let recipes = value {
-                    self.recipe  = recipes
+                    self.ingredients  = recipes.ingredients ?? [Ingredient]()
                 }
             }
             .store(in: &cancellableSet)

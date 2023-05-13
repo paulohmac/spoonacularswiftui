@@ -21,7 +21,7 @@ struct MainView: View {
                 TextField("Enter the ingredient", text: $viewModel.textSearch  )
                 List(viewModel.recipeList){ recipe in
                     VStack{
-                        NavigationLink(destination: DetailView(idRecipe: recipe.id ?? 0)) {
+                        NavigationLink(destination: IngredientsView(idRecipe: recipe.id ?? 0)) {
                             Text(recipe.title ?? ""  )
                                 .font(.headline)
                                 .padding()

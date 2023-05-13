@@ -19,7 +19,7 @@ class MainSpoonacularViewModel : MainViewModel, ObservableObject{
     
     private var cancellableSet: Set<AnyCancellable> = []
 
-   
+
     @Published var isLoading =  false
 
     @Published var textSearch : String = "" {
