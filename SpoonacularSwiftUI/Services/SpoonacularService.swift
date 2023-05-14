@@ -11,13 +11,15 @@ import Alamofire
 
 
 protocol SpoonacularService{
-    func getRecipes(ingredients : String) -> AnyPublisher<Recipes?, AFError>
+    
+    func getRecipes(ingredients : String) -> AnyPublisher<[Recipe]?, AFError>
 
     func getIngredients(id : String) -> AnyPublisher<Ingredients?, AFError>
 }
 
-struct SpoonacularHttpService : SpoonacularService{
 
+struct SpoonacularHttpService : SpoonacularService{
+    
     func getIngredients(id: String) -> AnyPublisher<Ingredients?, Alamofire.AFError> {
         let url = URL(string: String(format:ServiceConfiguration.ingredientsUrl, id))!
         
@@ -28,14 +30,14 @@ struct SpoonacularHttpService : SpoonacularService{
                            headers,
                            &parameters)
         .validate()
-           .publishDecodable(type: Ingredients?.self)
-           .value()
-           .receive(on: DispatchQueue.main)
-           .eraseToAnyPublisher()
+        .publishDecodable(type: Ingredients?.self)
+        .value()
+        .receive(on: DispatchQueue.main)
+        .eraseToAnyPublisher()
     }
     
     
-    func getRecipes(ingredients : String) -> AnyPublisher<Recipes?, AFError>  {
+    func getRecipes(ingredients : String) -> AnyPublisher<[Recipe]?, AFError>  {
         let url = URL(string: ServiceConfiguration.searchUrl)!
         
         var parameters = generateRequestParameters()
@@ -47,14 +49,11 @@ struct SpoonacularHttpService : SpoonacularService{
                            headers,
                            &parameters)
         .validate()
-           .publishDecodable(type: Recipes?.self)
-           .value()
-           .receive(on: DispatchQueue.main)
-           .eraseToAnyPublisher()
+        .publishDecodable(type: [Recipe]?.self)
+        .value()
+        .receive(on: DispatchQueue.main)
+        .eraseToAnyPublisher()
     }
-    
-    
-    
     
 }
 
@@ -92,7 +91,7 @@ struct ServiceConfiguration{
     public static let appClientKey =  "apiKey"
     public static let headerKey =  "Accept"
     public static let headerValue =  "application/json"
-    public static let searchUrl = "https://api.spoonacular.com/recipes/random"
+    public static let searchUrl = "https://api.spoonacular.com/recipes/findByIngredients/"
     public static let ingredientsUrl = "https://api.spoonacular.com/recipes/%@/ingredientWidget.json"
     public static let ingredientParamKey = "ingredients"
     public static let ItemsParamKey = "number"

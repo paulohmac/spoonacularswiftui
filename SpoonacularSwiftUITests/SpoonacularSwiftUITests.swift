@@ -74,7 +74,7 @@ final class SpoonacularSwiftUITests: XCTestCase {
                 XCTAssertFalse(problem , "Recipes request fail")
             } receiveValue: {[weak self] value in
                 guard let self = self else { return }
-                XCTAssertNotNil( value?.recipes  , "Recipes list is null")
+                XCTAssertNotNil( value  , "Recipes list is null")
             }
             .store(in: &cancellableSet)
         }

@@ -22,17 +22,18 @@ struct MainView: View {
                 List(viewModel.recipeList){ recipe in
                     VStack{
                         NavigationLink(destination: IngredientsView(idRecipe: recipe.id ?? 0)) {
-                            Text(recipe.title ?? ""  )
-                                .font(.headline)
-                                .padding()
-                            Text(recipe.image ?? "" )
-                                .font(.body)
-                                .padding()
+                            VStack{
+                                AsyncImage(url: URL(string: recipe.image ?? ""))
+                                    .frame(width: 200, height: 200)
+                                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                                Text(recipe.title ?? ""  )
+                                    .font(.headline)
+                                    .padding()
+                            }
                         }
                     }
                 }
             }.padding(22.0)
-        }.onAppear {
         }
     }
     

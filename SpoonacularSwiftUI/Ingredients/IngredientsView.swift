@@ -10,34 +10,45 @@ import SwiftUI
 struct IngredientsView: View {
     @ObservedObject var viewModel = IngredientsViewModel()
 
-    @State var idRecipe = 0 {
-        didSet(value){
-            if value != 0 {
-                viewModel.listIngredients(idRecipe: String(value))
-            }
-        }
-    }
+    @State var idRecipe = 0
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 Text("Ingredients list" )
                 List(viewModel.ingredients){ ingredient in
-                    VStack{
+                    HStack{
+                        AsyncImage(url: URL(string: "https://spoonacular.com/cdn/ingredients_100x100/" + (ingredient.image ?? "")))
+                            .frame(width: 100, height: 100)
+                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                        VStack{
                             Text(ingredient.name ?? ""  )
-                                .font(.headline)
-                                .padding()
-                            Text(ingredient.amount ?? "" )
-                                .font(.body)
-                                .padding()
-                        Text( (ingredient.metric?.value ?? "" + (ingredient.metric?.unit ?? "") ?? "") )
-                                .font(.body)
-                                .padding()
+                                    .font(.headline)
+                                    .padding()
+                            HStack{
+                                Text( String(ingredient.amount.metric?.value ?? 0.0) )
+                                    .font(.body)
+                                    .padding()
+                                Text(ingredient.amount.metric?.unit ?? "" )
+                                    .font(.body)
+                                    .padding()
+                            }
+                        }
                     }
                 }
-            }.padding(22.0)
-        }.onAppear {
-        }    }
+            }
+            .padding(22.0)
+            .onAppear {
+                self.loadData()
+            }
+        }
+    }
+    private func loadData(){
+        if idRecipe != 0 {
+            viewModel.listIngredients(idRecipe: String(idRecipe))
+        }
+    }
+    
 }
 
 struct DetailView_Previews: PreviewProvider {

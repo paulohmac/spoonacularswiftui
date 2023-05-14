@@ -18,23 +18,32 @@ struct Ingredients : BaseCodable, Codable{
     }
 }
 struct Ingredient : BaseCodable, Codable{
-    let id : Int?
-    let name : String?
-    let image : String?
-    let amount : String?
-    let metric : Metric?
+    let id = UUID().uuidString
+    var name : String? = ""
+    var image : String? = ""
+    var amount : Amount
 
     enum CodingKeys: String, CodingKey {
         case id
         case name
         case image
         case amount
+    }
+}
+
+struct Amount : BaseCodable, Codable{
+    let id = UUID().uuidString
+    let metric : Metric?
+
+    enum CodingKeys: String, CodingKey {
+        case id
         case metric
     }
 }
+
 struct Metric : BaseCodable, Codable{
-    let id : Int?
-    let value : String?
+    let id = UUID().uuidString
+    let value : Float?
     let unit : String?
 
     enum CodingKeys: String, CodingKey {
@@ -43,3 +52,4 @@ struct Metric : BaseCodable, Codable{
         case unit
     }
 }
+ 

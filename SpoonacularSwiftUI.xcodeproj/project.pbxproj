@@ -14,8 +14,9 @@
 		8C1EFBA82A083E5E003D7363 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1EFBA72A083E5E003D7363 /* MainView.swift */; };
 		8C1EFBAA2A083ED2003D7363 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1EFBA92A083ED2003D7363 /* MainViewModel.swift */; };
 		8CA89B3F2A0C7B39008C11BD /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89B3E2A0C7B39008C11BD /* IngredientsView.swift */; };
-		8CA89B412A0C7B46008C11BD /* IngredientsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89B402A0C7B46008C11BD /* IngredientsModel.swift */; };
+		8CA89B412A0C7B46008C11BD /* IngredientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89B402A0C7B46008C11BD /* IngredientsViewModel.swift */; };
 		8CA89B432A0F152D008C11BD /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89B422A0F152D008C11BD /* Ingredients.swift */; };
+		8CA89B452A1066FF008C11BD /* SpoonacularViewModelSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89B442A1066FF008C11BD /* SpoonacularViewModelSwiftUITests.swift */; };
 		8CF9BD2B2A0342FE00800CB4 /* SpoonacularSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9BD2A2A0342FE00800CB4 /* SpoonacularSwiftUIApp.swift */; };
 		8CF9BD2D2A0342FE00800CB4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9BD2C2A0342FE00800CB4 /* ContentView.swift */; };
 		8CF9BD2F2A03430000800CB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CF9BD2E2A03430000800CB4 /* Assets.xcassets */; };
@@ -50,8 +51,9 @@
 		8C1EFBA92A083ED2003D7363 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		8C1EFBAB2A085382003D7363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8CA89B3E2A0C7B39008C11BD /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
-		8CA89B402A0C7B46008C11BD /* IngredientsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsModel.swift; sourceTree = "<group>"; };
+		8CA89B402A0C7B46008C11BD /* IngredientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewModel.swift; sourceTree = "<group>"; };
 		8CA89B422A0F152D008C11BD /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
+		8CA89B442A1066FF008C11BD /* SpoonacularViewModelSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpoonacularViewModelSwiftUITests.swift; sourceTree = "<group>"; };
 		8CF9BD272A0342FE00800CB4 /* SpoonacularSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpoonacularSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF9BD2A2A0342FE00800CB4 /* SpoonacularSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpoonacularSwiftUIApp.swift; sourceTree = "<group>"; };
 		8CF9BD2C2A0342FE00800CB4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				8CA89B3E2A0C7B39008C11BD /* IngredientsView.swift */,
-				8CA89B402A0C7B46008C11BD /* IngredientsModel.swift */,
+				8CA89B402A0C7B46008C11BD /* IngredientsViewModel.swift */,
 			);
 			path = Ingredients;
 			sourceTree = "<group>";
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				8CF9BD3B2A03430000800CB4 /* SpoonacularSwiftUITests.swift */,
+				8CA89B442A1066FF008C11BD /* SpoonacularViewModelSwiftUITests.swift */,
 			);
 			path = SpoonacularSwiftUITests;
 			sourceTree = "<group>";
@@ -335,7 +338,7 @@
 				8CA89B3F2A0C7B39008C11BD /* IngredientsView.swift in Sources */,
 				8C1EFBA32A06F894003D7363 /* ServiceError.swift in Sources */,
 				8C1EFBA82A083E5E003D7363 /* MainView.swift in Sources */,
-				8CA89B412A0C7B46008C11BD /* IngredientsModel.swift in Sources */,
+				8CA89B412A0C7B46008C11BD /* IngredientsViewModel.swift in Sources */,
 				8CF9BD2D2A0342FE00800CB4 /* ContentView.swift in Sources */,
 				8CF9BD2B2A0342FE00800CB4 /* SpoonacularSwiftUIApp.swift in Sources */,
 				8C1EFB982A05E92F003D7363 /* SpoonacularService.swift in Sources */,
@@ -348,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CA89B452A1066FF008C11BD /* SpoonacularViewModelSwiftUITests.swift in Sources */,
 				8CF9BD3C2A03430000800CB4 /* SpoonacularSwiftUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

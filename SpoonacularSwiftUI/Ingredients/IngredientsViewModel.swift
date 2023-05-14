@@ -8,8 +8,12 @@
 import Foundation
 import Combine
 
+protocol IngredientsSpoonacularViewModel{
+    
+    func listIngredients(idRecipe : String)
+}
 
-class IngredientsViewModel : ObservableObject{
+class IngredientsViewModel : IngredientsSpoonacularViewModel, ObservableObject{
     
     @Published var ingredients =  [Ingredient]()
     
@@ -48,8 +52,10 @@ class IngredientsViewModel : ObservableObject{
             } receiveValue: {[weak self] value in
                 guard let self = self else { return }
                 
-                if let recipes = value {
-                    self.ingredients  = recipes.ingredients ?? [Ingredient]()
+                if let recipes = value?.ingredients {
+                    DispatchQueue.main.async {
+                        self.ingredients  = recipes
+                    }
                 }
             }
             .store(in: &cancellableSet)

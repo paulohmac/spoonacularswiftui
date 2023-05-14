@@ -9,16 +9,20 @@ import Foundation
 import Combine
 
 protocol MainViewModel{
+
+    func getFindRecipes(ingredients : String)
+    
+    var recipeList :  [Recipe] {get set}
+
+    var isLoading : Bool {get set}
+
+    var textSearch : String {get set}
     
 }
-
 
 class MainSpoonacularViewModel : MainViewModel, ObservableObject{
     
     @Published var recipeList =  [Recipe]()
-    
-    private var cancellableSet: Set<AnyCancellable> = []
-
 
     @Published var isLoading =  false
 
@@ -29,8 +33,10 @@ class MainSpoonacularViewModel : MainViewModel, ObservableObject{
             }
         }
     }
-    
-    var service: SpoonacularService
+
+    private var cancellableSet: Set<AnyCancellable> = []
+
+    private var service: SpoonacularService
     
     init() {
         self.service = SpoonacularHttpService()
@@ -61,7 +67,8 @@ class MainSpoonacularViewModel : MainViewModel, ObservableObject{
             } receiveValue: {[weak self] value in
                 guard let self = self else { return }
                 
-                if let recipes = value?.recipes{
+                if let recipes = value{
+                    self.recipeList.removeAll()
                     self.recipeList  = recipes
                 }
             }
