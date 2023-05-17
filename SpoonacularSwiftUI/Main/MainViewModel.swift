@@ -28,7 +28,7 @@ class MainSpoonacularViewModel : MainViewModel, ObservableObject{
 
     @Published var textSearch : String = "" {
         didSet(value){
-            if value != "", value.count > 5 {
+            if value != "", value.count >= 5 {
                 getFindRecipes(ingredients: value)
             }
         }
@@ -36,14 +36,14 @@ class MainSpoonacularViewModel : MainViewModel, ObservableObject{
 
     private var cancellableSet: Set<AnyCancellable> = []
 
-    private var service: SpoonacularService
+    private var service : SpoonacularService?
     
-    init() {
-        self.service = SpoonacularHttpService()
+    init(factory : Factory) {
+        self.service = factory.getService()
     }
-    
+
     public func getFindRecipes(ingredients : String){
-        service.getRecipes(ingredients: ingredients)
+        service?.getRecipes(ingredients: ingredients)
             .sink { completion in
                 
                 switch completion {

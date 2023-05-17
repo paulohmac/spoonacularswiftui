@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IngredientsView: View {
-    @ObservedObject var viewModel = IngredientsViewModel()
+    @ObservedObject var viewModel = IngredientsViewModel(factory: ServiceFactory())
 
     @State var idRecipe = 0
 

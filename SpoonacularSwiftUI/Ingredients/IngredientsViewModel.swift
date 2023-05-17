@@ -23,8 +23,8 @@ class IngredientsViewModel : IngredientsSpoonacularViewModel, ObservableObject{
 
     var service: SpoonacularService
     
-    init() {
-        self.service = SpoonacularHttpService()
+    init(factory : Factory) {
+        self.service = factory.getService()
     }
     
     public func listIngredients(idRecipe : String){

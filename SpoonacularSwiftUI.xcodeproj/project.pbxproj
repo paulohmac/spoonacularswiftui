@@ -13,10 +13,15 @@
 		8C1EFBA62A06FBDF003D7363 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1EFBA52A06FBDF003D7363 /* Alamofire */; };
 		8C1EFBA82A083E5E003D7363 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1EFBA72A083E5E003D7363 /* MainView.swift */; };
 		8C1EFBAA2A083ED2003D7363 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1EFBA92A083ED2003D7363 /* MainViewModel.swift */; };
+		8C88D9872A131F380063B56F /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88D9862A131F380063B56F /* ServiceFactory.swift */; };
+		8C88D98A2A1475070063B56F /* ArgentumSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8C88D9892A1475070063B56F /* ArgentumSans-Regular.otf */; };
+		8C88D98B2A1475070063B56F /* ArgentumSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8C88D9892A1475070063B56F /* ArgentumSans-Regular.otf */; };
+		8C88D98C2A1475070063B56F /* ArgentumSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8C88D9892A1475070063B56F /* ArgentumSans-Regular.otf */; };
 		8CA89B3F2A0C7B39008C11BD /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89B3E2A0C7B39008C11BD /* IngredientsView.swift */; };
 		8CA89B412A0C7B46008C11BD /* IngredientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89B402A0C7B46008C11BD /* IngredientsViewModel.swift */; };
 		8CA89B432A0F152D008C11BD /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89B422A0F152D008C11BD /* Ingredients.swift */; };
 		8CA89B452A1066FF008C11BD /* SpoonacularViewModelSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89B442A1066FF008C11BD /* SpoonacularViewModelSwiftUITests.swift */; };
+		8CAF868C2A11B9BF00468269 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAF868B2A11B9BF00468269 /* Color.swift */; };
 		8CF9BD2B2A0342FE00800CB4 /* SpoonacularSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9BD2A2A0342FE00800CB4 /* SpoonacularSwiftUIApp.swift */; };
 		8CF9BD2D2A0342FE00800CB4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9BD2C2A0342FE00800CB4 /* ContentView.swift */; };
 		8CF9BD2F2A03430000800CB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CF9BD2E2A03430000800CB4 /* Assets.xcassets */; };
@@ -50,10 +55,13 @@
 		8C1EFBA72A083E5E003D7363 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8C1EFBA92A083ED2003D7363 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		8C1EFBAB2A085382003D7363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8C88D9862A131F380063B56F /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
+		8C88D9892A1475070063B56F /* ArgentumSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ArgentumSans-Regular.otf"; sourceTree = "<group>"; };
 		8CA89B3E2A0C7B39008C11BD /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
 		8CA89B402A0C7B46008C11BD /* IngredientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewModel.swift; sourceTree = "<group>"; };
 		8CA89B422A0F152D008C11BD /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		8CA89B442A1066FF008C11BD /* SpoonacularViewModelSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpoonacularViewModelSwiftUITests.swift; sourceTree = "<group>"; };
+		8CAF868B2A11B9BF00468269 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8CF9BD272A0342FE00800CB4 /* SpoonacularSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpoonacularSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF9BD2A2A0342FE00800CB4 /* SpoonacularSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpoonacularSwiftUIApp.swift; sourceTree = "<group>"; };
 		8CF9BD2C2A0342FE00800CB4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,6 +143,30 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		8C88D9852A131F160063B56F /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				8C88D9862A131F380063B56F /* ServiceFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		8C88D9882A1474B60063B56F /* font */ = {
+			isa = PBXGroup;
+			children = (
+				8C88D9892A1475070063B56F /* ArgentumSans-Regular.otf */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
+		8CAF868A2A11B9AE00468269 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8CAF868B2A11B9BF00468269 /* Color.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		8CF9BD1E2A0342FE00800CB4 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +190,9 @@
 		8CF9BD292A0342FE00800CB4 /* SpoonacularSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				8C88D9882A1474B60063B56F /* font */,
+				8C88D9852A131F160063B56F /* Factory */,
+				8CAF868A2A11B9AE00468269 /* Extension */,
 				8C1EFBAB2A085382003D7363 /* Info.plist */,
 				8C1EFBA12A06F87B003D7363 /* Error */,
 				8C1EFB9B2A05E97D003D7363 /* Ingredients */,
@@ -310,6 +345,7 @@
 			files = (
 				8CF9BD322A03430000800CB4 /* Preview Assets.xcassets in Resources */,
 				8CF9BD2F2A03430000800CB4 /* Assets.xcassets in Resources */,
+				8C88D98A2A1475070063B56F /* ArgentumSans-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C88D98B2A1475070063B56F /* ArgentumSans-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C88D98C2A1475070063B56F /* ArgentumSans-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,11 +374,13 @@
 			files = (
 				8C1EFBAA2A083ED2003D7363 /* MainViewModel.swift in Sources */,
 				8CA89B3F2A0C7B39008C11BD /* IngredientsView.swift in Sources */,
+				8CAF868C2A11B9BF00468269 /* Color.swift in Sources */,
 				8C1EFBA32A06F894003D7363 /* ServiceError.swift in Sources */,
 				8C1EFBA82A083E5E003D7363 /* MainView.swift in Sources */,
 				8CA89B412A0C7B46008C11BD /* IngredientsViewModel.swift in Sources */,
 				8CF9BD2D2A0342FE00800CB4 /* ContentView.swift in Sources */,
 				8CF9BD2B2A0342FE00800CB4 /* SpoonacularSwiftUIApp.swift in Sources */,
+				8C88D9872A131F380063B56F /* ServiceFactory.swift in Sources */,
 				8C1EFB982A05E92F003D7363 /* SpoonacularService.swift in Sources */,
 				8CA89B432A0F152D008C11BD /* Ingredients.swift in Sources */,
 				8C1EFBA02A06CB6E003D7363 /* Recipe.swift in Sources */,

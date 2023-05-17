@@ -15,6 +15,7 @@ protocol SpoonacularService{
     func getRecipes(ingredients : String) -> AnyPublisher<[Recipe]?, AFError>
 
     func getIngredients(id : String) -> AnyPublisher<Ingredients?, AFError>
+    
 }
 
 
@@ -83,7 +84,6 @@ extension SpoonacularService {
                           headers: headers)
     }
 
-    
 }
 
 struct ServiceConfiguration{
