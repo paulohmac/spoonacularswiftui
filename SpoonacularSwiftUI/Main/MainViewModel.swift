@@ -27,12 +27,17 @@ class MainSpoonacularViewModel : MainViewModel, ObservableObject{
     @Published var isLoading =  false
 
     @Published var textSearch : String = "" {
-        didSet(value){
-            if value != "", value.count >= 5 {
+        willSet(value){
+            if value != "" && value.count > 5 {
                 getFindRecipes(ingredients: value)
             }
         }
     }
+    
+    @Published var showingAlert = false
+    
+    @Published var alertMessag = ""
+
 
     private var cancellableSet: Set<AnyCancellable> = []
 
@@ -49,7 +54,7 @@ class MainSpoonacularViewModel : MainViewModel, ObservableObject{
                 switch completion {
                 case .failure(let error):
                     print(error)
-                    
+                    self.alertMessag = error.localizedDescription
                     if let code = error.responseCode {
                         print(code)
                     }
@@ -62,7 +67,7 @@ class MainSpoonacularViewModel : MainViewModel, ObservableObject{
                 case .finished:
                     break
                 }
-                
+                self.showingAlert = true
                 
             } receiveValue: {[weak self] value in
                 guard let self = self else { return }

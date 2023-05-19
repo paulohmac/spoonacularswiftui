@@ -10,12 +10,13 @@ import SwiftUI
 struct MainView: View {
     @ObservedObject var viewModel = MainSpoonacularViewModel(factory: ServiceFactory())
     
+    
+    
     var body: some View {
         if viewModel.isLoading{
             ProgressView()
                 .padding(10)
         }
-        
         NavigationView {
             VStack(alignment: .leading) {
                 
@@ -65,27 +66,36 @@ struct MainView: View {
                         )
                 }
 
-                List(viewModel.recipeList){ recipe in
-                    ZStack(alignment: .leading) {
+                List(viewModel.recipeList) { recipe in
+                    ZStack{
                         NavigationLink(destination: IngredientsView(idRecipe: recipe.id ?? 0)) {
-                            ZStack{
-                                AsyncImage(url: URL(string: recipe.image ?? ""))
-                                    .clipShape(RoundedRectangle(cornerRadius: 2))
-                                
-                            }.overlay(Text(recipe.title ?? ""  )
-                                .font(.headline)
-                                .padding(6)
-                                .foregroundColor(.white), alignment: .bottomLeading)
-                            
+                            EmptyView()
                         }
-                        Text("")
+                        ZStack{
+                            AsyncImage(url: URL(string: recipe.image ?? ""))
+                                .clipShape(RoundedRectangle(cornerRadius: 2))
+                                .frame(width: UIScreen.main.bounds.width)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        .overlay(Text(recipe.title ?? ""  )
+                            .font(.headline)
+                            .padding(6)
+                            .foregroundColor(.white), alignment: .bottomLeading)
+                        .buttonStyle(PlainButtonStyle())
                     }
+                    .frame(width: UIScreen.main.bounds.width)
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
+                .listStyle(GroupedListStyle())
+                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 .frame(width: UIScreen.main.bounds.width)
                 .background(Color(hex: 0xf2f2f2))
-
             }
         }
+        .alert(viewModel.alertMessag, isPresented: $viewModel.showingAlert) {
+            Button("OK", role: .cancel) { }
+        }
+
     }
     
 }
