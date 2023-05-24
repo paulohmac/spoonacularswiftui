@@ -28,7 +28,8 @@ class IngredientsViewModel : IngredientsSpoonacularViewModel, ObservableObject{
     }
     
     public func listIngredients(idRecipe : String){
-        service.getIngredients(id: idRecipe)
+        DispatchQueue.main.async {
+            self.service.getIngredients(id: idRecipe)
             .sink { completion in
                 
                 switch completion {
@@ -58,7 +59,8 @@ class IngredientsViewModel : IngredientsSpoonacularViewModel, ObservableObject{
                     }
                 }
             }
-            .store(in: &cancellableSet)
+            .store(in: &self.cancellableSet)
+        }
     }
 }
 

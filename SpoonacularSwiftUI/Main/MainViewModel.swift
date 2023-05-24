@@ -48,36 +48,52 @@ class MainSpoonacularViewModel : MainViewModel, ObservableObject{
     }
 
     public func getFindRecipes(ingredients : String){
+
+        if (isLoading == true){
+            return
+        }
+
+        self.showingAlert = false
+        isLoading = true
+        sendRequest(ingredients: ingredients)
+    }
+    
+    private func sendRequest(ingredients : String){
         service?.getRecipes(ingredients: ingredients)
             .sink { completion in
-                
+                self.isLoading = false
+
                 switch completion {
                 case .failure(let error):
-                    print(error)
-                    self.alertMessag = error.localizedDescription
+                    print("%%%\(error) " )
                     if let code = error.responseCode {
                         print(code)
-                    }
-                    if error.isSessionTaskError {
-                        print(".noInternet")
-                    }
-                    if error.isResponseSerializationError {
-                        print(".decoding")
+                        self.showMessage(message:  error.localizedDescription)
+                    }else  if error.isSessionTaskError || error.isResponseSerializationError {
+                        self.showMessage(message: error.localizedDescription)
                     }
                 case .finished:
                     break
                 }
-                self.showingAlert = true
-                
+
             } receiveValue: {[weak self] value in
+                self?.showingAlert = false
                 guard let self = self else { return }
                 
                 if let recipes = value{
                     self.recipeList.removeAll()
                     self.recipeList  = recipes
                 }
+                self.isLoading = false
             }
             .store(in: &cancellableSet)
     }
+
+    private func showMessage(message :  String){
+        self.alertMessag = message
+        self.showingAlert = true
+    }
+    
+    
     
 }

@@ -22,6 +22,7 @@
 		8CA89B432A0F152D008C11BD /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89B422A0F152D008C11BD /* Ingredients.swift */; };
 		8CA89B452A1066FF008C11BD /* SpoonacularViewModelSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89B442A1066FF008C11BD /* SpoonacularViewModelSwiftUITests.swift */; };
 		8CAF868C2A11B9BF00468269 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAF868B2A11B9BF00468269 /* Color.swift */; };
+		8CEC486F2A1DAA8100F7E0B3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC486D2A1DAA8100F7E0B3 /* Localizable.strings */; };
 		8CF9BD2B2A0342FE00800CB4 /* SpoonacularSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9BD2A2A0342FE00800CB4 /* SpoonacularSwiftUIApp.swift */; };
 		8CF9BD2D2A0342FE00800CB4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9BD2C2A0342FE00800CB4 /* ContentView.swift */; };
 		8CF9BD2F2A03430000800CB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CF9BD2E2A03430000800CB4 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		8CA89B422A0F152D008C11BD /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		8CA89B442A1066FF008C11BD /* SpoonacularViewModelSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpoonacularViewModelSwiftUITests.swift; sourceTree = "<group>"; };
 		8CAF868B2A11B9BF00468269 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		8CEC486E2A1DAA8100F7E0B3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8CF9BD272A0342FE00800CB4 /* SpoonacularSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpoonacularSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF9BD2A2A0342FE00800CB4 /* SpoonacularSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpoonacularSwiftUIApp.swift; sourceTree = "<group>"; };
 		8CF9BD2C2A0342FE00800CB4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				8C88D9852A131F160063B56F /* Factory */,
 				8CAF868A2A11B9AE00468269 /* Extension */,
 				8C1EFBAB2A085382003D7363 /* Info.plist */,
+				8CEC486D2A1DAA8100F7E0B3 /* Localizable.strings */,
 				8C1EFBA12A06F87B003D7363 /* Error */,
 				8C1EFB9B2A05E97D003D7363 /* Ingredients */,
 				8C1EFB9A2A05E967003D7363 /* Main */,
@@ -321,7 +324,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				"pt-BR",
 			);
 			mainGroup = 8CF9BD1E2A0342FE00800CB4;
 			packageReferences = (
@@ -344,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CF9BD322A03430000800CB4 /* Preview Assets.xcassets in Resources */,
+				8CEC486F2A1DAA8100F7E0B3 /* Localizable.strings in Resources */,
 				8CF9BD2F2A03430000800CB4 /* Assets.xcassets in Resources */,
 				8C88D98A2A1475070063B56F /* ArgentumSans-Regular.otf in Resources */,
 			);
@@ -419,6 +423,17 @@
 			targetProxy = 8CF9BD422A03430000800CB4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8CEC486D2A1DAA8100F7E0B3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CEC486E2A1DAA8100F7E0B3 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8CF9BD492A03430000800CB4 /* Debug */ = {

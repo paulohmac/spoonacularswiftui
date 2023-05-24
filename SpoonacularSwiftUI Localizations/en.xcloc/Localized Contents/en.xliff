@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="SpoonacularSwiftUI/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>SpoonacularSwiftUI</source>
+        <target>SpoonacularSwiftUI</target>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="SpoonacularSwiftUI/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+    </header>
+    <body>
+      <trans-unit id="Enter the ingredient" xml:space="preserve">
+        <source>Enter the ingredient</source>
+        <target>Enter the ingredient</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Find recipe by ingredients" xml:space="preserve">
+        <source>Find recipe by ingredients</source>
+        <target>Find recipe by ingredients</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Have the style touching the safe area edge." xml:space="preserve">
+        <source>Have the style touching the safe area edge.</source>
+        <target>Have the style touching the safe area edge.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Hello, world!" xml:space="preserve">
+        <source>Hello, world!</source>
+        <target>Hello, world!</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Ingredients list" xml:space="preserve">
+        <source>Ingredients list</source>
+        <target>Ingredients list</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Nav Bar Background" xml:space="preserve">
+        <source>Nav Bar Background</source>
+        <target>Nav Bar Background</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="OK" xml:space="preserve">
+        <source>OK</source>
+        <target>OK</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="by Paulo Hmac" xml:space="preserve">
+        <source>by Paulo Hmac</source>
+        <target>by Paulo Hmac</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="https://github.com/paulohmac" xml:space="preserve">
+        <source>https://github.com/paulohmac</source>
+        <target>https://github.com/paulohmac</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

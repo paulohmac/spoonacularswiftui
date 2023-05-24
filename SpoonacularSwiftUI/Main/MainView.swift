@@ -23,18 +23,17 @@ struct MainView: View {
                 ZStack{
                     Image("vegetal")
                         .resizable()
-                        .opacity(1)
                         .scaledToFill()
                         .frame(width: UIScreen.main.bounds.width, height: 300)
                         .clipped()
                         VStack{
-                            Text("Find recipe by ingredients")
+                            Text(NSLocalizedString("Find recipe by ingredients", comment: ""))
                                 .foregroundColor(Color(hex: 0x494949))
                                 .bold()
                                 .font(.system(size: 24))
 
                             ZStack{
-                                TextField("Enter the ingredient", text: $viewModel.textSearch )
+                                TextField(NSLocalizedString("Enter the ingredient", comment: ""), text: $viewModel.textSearch )
                                     .padding(.leading, 8)
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .background(.white)
@@ -44,12 +43,12 @@ struct MainView: View {
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .foregroundColor(Color(hex: 0xc5c5c5))
                             }
-                            Text("by Paulo Hmac")
+                            Text(NSLocalizedString("by Paulo Hmac", comment: ""))
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(Color(hex: 0x494949))
                                 .bold()
                                 .font(.custom("ArgentumSans-Regular",size: 16))
-                            Text("https://github.com/paulohmac")
+                            Text(NSLocalizedString("https://github.com/paulohmac", comment: ""))
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .bold()
                                 .accentColor(Color(hex: 0xf0616d))
@@ -69,7 +68,6 @@ struct MainView: View {
                 List(viewModel.recipeList) { recipe in
                     ZStack{
                         NavigationLink(destination: IngredientsView(idRecipe: recipe.id ?? 0)) {
-                            EmptyView()
                         }
                         ZStack{
                             AsyncImage(url: URL(string: recipe.image ?? ""))
