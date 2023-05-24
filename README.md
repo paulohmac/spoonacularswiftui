@@ -16,6 +16,7 @@ Unit test and UITest
 [X] Alamofire acessing Spoonacular<br/>
 [X] MVVM<br/>
 [ ] UI<br/>
+[X] Localization
 
 ## Future features<br/>
 [ ] Aws backend<br/>
