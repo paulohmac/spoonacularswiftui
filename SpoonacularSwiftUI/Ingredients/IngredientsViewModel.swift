@@ -15,7 +15,7 @@ protocol IngredientsSpoonacularViewModel{
 
 class IngredientsViewModel : IngredientsSpoonacularViewModel, ObservableObject{
     
-    @Published var ingredients =  [Ingredient]()
+    @Published  var ingredients =  [Ingredient]()
     
     private var cancellableSet: Set<AnyCancellable> = []
 

@@ -8,20 +8,20 @@
 //{"ingredients":[{"name":"espresso","image":"espresso.jpg","amount":{"metric":{"value":236.0,"unit":"ml"},"us":{"value":1.0,"unit":"cup"}}},
 import Foundation
 
-struct Ingredients : BaseCodable, Codable{
-    var id: Int?
-    let ingredients : [Ingredient]?
+public struct Ingredients : BaseCodable, Codable{
+    public var id: Int?
+    public let ingredients : [Ingredient]?
     
     enum CodingKeys: String, CodingKey {
         case id
         case ingredients
     }
 }
-struct Ingredient : BaseCodable, Codable{
-    let id = UUID().uuidString
-    var name : String? = ""
-    var image : String? = ""
-    var amount : Amount
+public struct Ingredient : BaseCodable, Codable{
+    public let id = UUID().uuidString
+    public var name : String? = ""
+    public var image : String? = ""
+    public var amount : Amount
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -31,9 +31,9 @@ struct Ingredient : BaseCodable, Codable{
     }
 }
 
-struct Amount : BaseCodable, Codable{
-    let id = UUID().uuidString
-    let metric : Metric?
+public struct Amount : BaseCodable, Codable{
+    public let id = UUID().uuidString
+    public let metric : Metric?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -41,10 +41,10 @@ struct Amount : BaseCodable, Codable{
     }
 }
 
-struct Metric : BaseCodable, Codable{
-    let id = UUID().uuidString
-    let value : Float?
-    let unit : String?
+public struct Metric : BaseCodable, Codable{
+    public let id = UUID().uuidString
+    public let value : Float?
+    public let unit : String?
 
     enum CodingKeys: String, CodingKey {
         case id

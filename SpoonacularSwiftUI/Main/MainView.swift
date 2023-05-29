@@ -67,7 +67,7 @@ struct MainView: View {
 
                 List(viewModel.recipeList) { recipe in
                     ZStack{
-                        NavigationLink(destination: IngredientsView(idRecipe: recipe.id ?? 0)) {
+                        NavigationLink(destination: IngredientsView(idRecipe: recipe.id ?? 0, recipeTitle: recipe.title ?? "" )) {
                         }
                         ZStack{
                             AsyncImage(url: URL(string: recipe.image ?? ""))
@@ -84,7 +84,7 @@ struct MainView: View {
                     .frame(width: UIScreen.main.bounds.width)
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
-                .listStyle(GroupedListStyle())
+                .listStyle(PlainListStyle())
                 .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 .frame(width: UIScreen.main.bounds.width)
                 .background(Color(hex: 0xf2f2f2))
