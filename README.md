@@ -11,7 +11,7 @@ Unit test and UITest
 ## Under construction<br />
 
 [X] Views SwiftUI<br/>
-[ ] UniTest<br/>
+[X] Unit test<br/>
 [ ] XcUiTest<br/>
 [X] Alamofire acessing Spoonacular<br/>
 [X] MVVM<br/>
